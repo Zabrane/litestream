@@ -10,10 +10,10 @@ dist-linux:
 	tar -cz -f dist/litestream-linux-amd64.tar.gz -C dist litestream
 
 dist-linux-arm:
-	docker run --rm -v "${PWD}":/usr/src/litestream -w /usr/src/litestream -e CGO_ENABLED=1 -e CC=arm-linux-gnueabihf-gcc -e GOOS=linux -e GOARCH=arm golang-xc:1.16 go build -v -o dist/litestream-linux-arm ./cmd/litestream
+	docker run --rm -v "${PWD}":/usr/src/litestream -w /usr/src/litestream -e CGO_ENABLED=1 -e CC=arm-linux-gnueabihf-gcc -e GOOS=linux -e GOARCH=arm golang-xc:1.24.1 go build -v -o dist/litestream-linux-arm ./cmd/litestream
 
 dist-linux-arm64:
-	docker run --rm -v "${PWD}":/usr/src/litestream -w /usr/src/litestream -e CGO_ENABLED=1 -e CC=aarch64-linux-gnu-gcc -e GOOS=linux -e GOARCH=arm64 golang-xc:1.16 go build -v -o dist/litestream-linux-arm64 ./cmd/litestream
+	docker run --rm -v "${PWD}":/usr/src/litestream -w /usr/src/litestream -e CGO_ENABLED=1 -e CC=aarch64-linux-gnu-gcc -e GOOS=linux -e GOARCH=arm64 golang-xc:1.24.1 go build -v -o dist/litestream-linux-arm64 ./cmd/litestream
 
 dist-macos:
 ifndef LITESTREAM_VERSION
