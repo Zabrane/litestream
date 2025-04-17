@@ -1,3 +1,4 @@
+LITESTREAM_VERSION:=(development build)
 default:
 
 docker:
