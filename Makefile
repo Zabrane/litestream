@@ -1,3 +1,5 @@
+LITESTREAM_VERSION ?= v0.3.13
+
 default:
 
 docker:
