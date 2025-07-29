@@ -23,14 +23,12 @@ ifndef LITESTREAM_VERSION
 endif
 	mkdir -p dist
 
-	GOOS=darwin GOARCH=amd64 CC="gcc -target amd64-apple-macos11" CGO_ENABLED=1 go build -v -ldflags "-s -w -X 'main.Version=${LITESTREAM_VERSION}'"  -o dist/litestream ./cmd/litestream
-	gon etc/gon.hcl
-	mv dist/litestream.zip dist/litestream-${LITESTREAM_VERSION}-darwin-amd64.zip
+	GOOS=darwin GOARCH=amd64 CC="gcc -target amd64-apple-macos11" CGO_ENABLED=1 go build -v -ldflags "-s -w -X 'main.Version=${LITESTREAM_VERSION}'"  -o dist/litestream-amd64 ./cmd/litestream
+	zip dist/litestream-${LITESTREAM_VERSION}-darwin-amd64.zip -j dist/litestream-amd64
 	openssl dgst -sha256 dist/litestream-${LITESTREAM_VERSION}-darwin-amd64.zip
 
-	GOOS=darwin GOARCH=arm64 CC="gcc -target arm64-apple-macos11" CGO_ENABLED=1 go build -v -ldflags "-s -w -X 'main.Version=${LITESTREAM_VERSION}'"  -o dist/litestream ./cmd/litestream
-	gon etc/gon.hcl
-	mv dist/litestream.zip dist/litestream-${LITESTREAM_VERSION}-darwin-arm64.zip
+	GOOS=darwin GOARCH=arm64 CC="gcc -target arm64-apple-macos11" CGO_ENABLED=1 go build -v -ldflags "-s -w -X 'main.Version=${LITESTREAM_VERSION}'"  -o dist/litestream-arm64 ./cmd/litestream
+	zip dist/litestream-${LITESTREAM_VERSION}-darwin-arm64.zip -j dist/litestream-arm64
 	openssl dgst -sha256 dist/litestream-${LITESTREAM_VERSION}-darwin-arm64.zip
 
 clean:
